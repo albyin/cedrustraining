@@ -1,14 +1,17 @@
 // /creating a min file by concat specified files
  module.exports = function(grunt){
 	grunt.initConfig({
+		conf:{
+			srcFiles:"public/javascripts/app/**/*.js"
+		},
 		uglify:{
 			build:{
-				src:"public/javascripts/app/**/*.js",
+				src:"<%= conf.srcFiles %>",
 				dest:"public/javascripts/app.min.js"
 			}
 		},
 		watch:{
-	    files:"public/javascripts/app/**/*.js",
+	    files:"<%= conf.srcFiles %>",
 	    tasks: ["uglify"]
     }
 	});
