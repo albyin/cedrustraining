@@ -8,10 +8,16 @@ app.controller("mainController", ["$scope", "Posts", "Comments", function($scope
 				$scope.posts = data;
 			});
 
-		Comments.get()
-			.then(function (data){
-				$scope.comments = data;
-			});
-
+		$scope.toggleComments = function (post){
+			if (post.comments){
+				post.comments = undefined;
+			}
+			else {
+				Comments.getAllByPostId(post.id)
+				.then(function (data){
+					post.comments = data;
+				});
+			}
+		};
 
 	}]);

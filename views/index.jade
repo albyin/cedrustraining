@@ -11,23 +11,17 @@ block content
 			content applied because of previous dot. #{my_var}
 
 	p this is the title {{title}}
-	table
-		thead
-			tr
-				th title
-				th body
-		tbody
-			tr(ng-repeat="post in posts")
-				td {{post.title}}
-				td {{post.body}}
 
-	table
-	thead
-		tr
-			th name
-			th body
-	tbody
-		tr(ng-repeat="comment in comments")
-			td {{comment.name}}
-			td {{comment.body}}
+	div(class="panel" ng-repeat="post in posts")
+		h4 Title: 
+		p {{post.title}}
+		h5 Body: 
+		p {{post.body}}
+		button(ng-click="toggleComments(post)") Comments
+		div(ng-repeat="comment in post.comments")
+			h5 Name:
+			p {{comment.name}}
+			h6 Body: 
+			p {{comment.body}}
+
 

@@ -36,7 +36,12 @@ app.factory("Comments", ["$http", "APIConfig", function($http, APIConfig){
 		get : function (){
 			return $http.get(APIConfig.getRoot() + "comments/")
       	.then(function(res){
-      		console.log("comments response", res);
+      		return res.data;
+      	});
+		},
+		getAllByPostId : function (postId){
+			return $http.get(APIConfig.getRoot() + "comments?postId=" + postId)
+      	.then(function(res){
       		return res.data;
       	});
 		}
