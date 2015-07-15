@@ -1,29 +1,37 @@
-app.factory("APIConfig", [function (){
+//API configuration factory
+app.factory('APIConfig', [function (){
 	return {
-		devRoot : "http://jsonplaceholder.typicode.com/",
-		prodRoot: "",
-		env : "dev",
-		setEnv : function (){
-			
+		//root api url for dev environment
+		devRoot : 'http://jsonplaceholder.typicode.com/',
+		//root api url for prod environment
+		prodRoot: '',
+		//current env
+		env : 'dev',
+		//set env function
+		setEnv : function () {
 		},
+		//will return correct root URL based on current env
 		getRoot : function () {
 			//if env is dev, return devRoot, else return prodRoot
-			if (this.env === "dev"){
+			if (this.env === 'dev') {
 				return this.devRoot;
 			}
-			else if (this.env ==="prod"){
+			else if (this.env ==='prod') {
 				return this.prodRoot;
 			}
 
+			//somehow neither of conditions above were satisfied, return null as error
 			return null;
 		}
 	};
 }]);
 
-app.factory("Posts", ["$http", "APIConfig", function($http, APIConfig){
+//factory to access posts
+app.factory('Posts', ['$http', 'APIConfig', function($http, APIConfig){
   return {
+  	//get all posts
     get : function() {
-      return $http.get(APIConfig.getRoot() + "posts/")
+      return $http.get(APIConfig.getRoot() + 'posts/')
       	.then(function(res){
       		return res.data;
       	});
@@ -31,16 +39,19 @@ app.factory("Posts", ["$http", "APIConfig", function($http, APIConfig){
   };
 }]);
 
-app.factory("Comments", ["$http", "APIConfig", function($http, APIConfig){
+//factory to access comments
+app.factory('Comments', ['$http', 'APIConfig', function($http, APIConfig){
 	return {
+		//get all comments
 		get : function (){
-			return $http.get(APIConfig.getRoot() + "comments/")
+			return $http.get(APIConfig.getRoot() + 'comments/')
       	.then(function(res){
       		return res.data;
       	});
 		},
+		//get all comments for a given postId
 		getAllByPostId : function (postId){
-			return $http.get(APIConfig.getRoot() + "comments?postId=" + postId)
+			return $http.get(APIConfig.getRoot() + 'comments?postId=' + postId)
       	.then(function(res){
       		return res.data;
       	});

@@ -2,13 +2,13 @@ doctype html
 html(ng-app="ngMyApp")
 	head
 		title= title
-		link(rel='stylesheet', href='/stylesheets/bootstrap.css')
-		link(rel='stylesheet', href='/stylesheets/style.css')
+		link(rel="stylesheet", href="bootstrap-3.3.5-dist/css/bootstrap.css")
+		link(rel="stylesheet", href="/stylesheets/style.css")
 		script(src="javascripts/vendors/jquery-2.1.4.js")
+		script(src="bootstrap-3.3.5-dist/js/bootstrap.js")
 		script(src="javascripts/vendors/angular.js")
-		script(src="javascripts/vendors/bootstrap.js")
 		script(src="javascripts/app.min.js")
 	body
 		div(ng-controller="mainController")
-			h2 {{title}}
+			h1 {{title}}
 			block content
