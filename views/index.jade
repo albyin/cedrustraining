@@ -1,17 +1,22 @@
 extends layout
 
 block content
-	//this title variable comes from express route which passes in title
-	h1= title
-	p Welcome to #{title}
-	div
-		- var my_var = 123;
-		if (title=="")
-			div.my_class.my_second_class(style="color:red", class="another_class") I'm a div inside the previous one #{my_var}
-		div#my_id.
-			content applied because of previous dot. #{my_var}
+	//- Sample code below from JADE tutorial session
 
-	p this is the title {{title}}
+	//- this title variable comes from express route which passes in title
+	//- h1= title
+	//- p Welcome to #{title}
+
+	//- div
+	//- 	- var my_var = 123;
+	//- 	if (title=="")
+	//- 		div.my_class.my_second_class(style="color:red", class="another_class") I'm a div inside the previous one #{my_var}
+	//- 	div#my_id.
+	//- 		content applied because of previous dot. #{my_var}
+
+	//- p Title: {{title}}
+
+	h1 Welcome to #{title}
 
 	ul.list-unstyled
 		li(ng-repeat="post in posts")

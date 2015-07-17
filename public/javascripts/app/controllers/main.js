@@ -1,5 +1,12 @@
 var app = angular.module('ngMyApp', []);
 
+// app.config(function ($urlRouterProvider, $locationProvider, $httpProvider) {
+//     // This turns off hashbang urls (/#about) and changes it to something normal (/about)
+//     $locationProvider.html5Mode(true);
+//     // If we go to a URL that ui-router doesn't have registered, go to the "/" url.
+//     $urlRouterProvider.otherwise('/');
+// });
+
 app.controller('mainController', ['$scope', 'Posts', 'Comments', function($scope, Posts, Comments){
 		//define title
 		$scope.title = 'Title comes from the controller';

@@ -6,8 +6,21 @@ body {
   height: 100vh;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   color: black;
+  padding-top: 50px;
 }
 
-a {
-  color: #00B7FF;
+#content{
+	padding-bottom:60px;
+}
+
+#footer{
+	padding-top:17px;
+}
+
+.navbar-brand .glyphicon{
+  color:green;
+}
+
+.navbar-brand span{
+  padding-left:10px;
 }

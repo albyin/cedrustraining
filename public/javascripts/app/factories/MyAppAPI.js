@@ -58,3 +58,16 @@ app.factory('Comments', ['$http', 'APIConfig', function($http, APIConfig){
 		}
 	};
 }]);
+
+//factory to access users
+app.factory('Users', ['$http', 'APIConfig', function($http, APIConfig){
+	return {
+		//get all users
+		get : function (){
+			return $http.get(APIConfig.getRoot() + 'users/')
+      	.then(function(res){
+      		return res.data;
+      	});
+		}
+	};
+}]);
