@@ -1,0 +1,12 @@
+h1 Posts
+
+ul.list-unstyled
+	li(ng-repeat="post in posts")
+		div.panel.panel-default
+			div.panel-heading Title: {{post.title}}
+			div.panel-body Body: {{post.body}}
+			div.panel-body
+				button(ng-click="toggleComments(post)") Comments
+			div.panel.panel-default(ng-repeat="comment in post.comments")
+				div.panel-heading Name: {{comment.name}}
+				div.panel-body Body: {{comment.body}}

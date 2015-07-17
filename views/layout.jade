@@ -11,21 +11,16 @@ html(ng-app="ngMyApp")
 	body
 		div.navbar.navbar-default.navbar-fixed-top
 			div.container
-				a.navbar-brand(href="/") 
+				a.navbar-brand(ng-click="curr_view = 'home' ") 
 					i.glyphicon.glyphicon-leaf 
 					span hello this is nav bar
 				ul.nav.navbar-nav.navbar-right
 					li 
-						a(href="") posts
+						a(ng-click="curr_view = 'posts' ") posts
 					li 
-						a(href="") members
-					li 
-						a(href="") about
-					li 
-						a(href="") contact
+						a(ng-click="curr_view = 'members' ") members
 		div.container(id="content")
-			div(ng-controller="mainController")
-				block content
+			block content
 		div.navbar.navbar-default.navbar-fixed-bottom(id="footer")
 			div.container
 				p.text-center Copyright 2015

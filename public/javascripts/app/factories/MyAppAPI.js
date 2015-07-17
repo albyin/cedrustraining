@@ -35,6 +35,12 @@ app.factory('Posts', ['$http', 'APIConfig', function($http, APIConfig){
       	.then(function(res){
       		return res.data;
       	});
+    },
+    getAllByUserId : function(userId) {
+    	return $http.get(APIConfig.getRoot() + 'posts?userId=' + userId)
+      	.then(function(res){
+      		return res.data;
+      	});
     }
   };
 }]);

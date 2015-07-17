@@ -1,23 +1,30 @@
 var app = angular.module('ngMyApp', []);
 
-// app.config(function ($urlRouterProvider, $locationProvider, $httpProvider) {
-//     // This turns off hashbang urls (/#about) and changes it to something normal (/about)
-//     $locationProvider.html5Mode(true);
-//     // If we go to a URL that ui-router doesn't have registered, go to the "/" url.
-//     $urlRouterProvider.otherwise('/');
-// });
-
-app.controller('mainController', ['$scope', 'Posts', 'Comments', function($scope, Posts, Comments){
+app.controller('mainController', ['$rootScope','$scope', 'Posts', 'Comments', 'Users', function($rootScope, $scope, Posts, Comments, Users){
 		//define title
 		$scope.title = 'Title comes from the controller';
 
-		//immediately get all posts, put onto scope for display
+		//set initial view
+		$rootScope.curr_view = 'home';
+
+		//expose function to access rootScope to change views
+		$scope.goView = function (view_name) {
+			$rootScope.curr_view = view_name;
+		};
+
+		//immediately get all posts, put onto scope
 		Posts.get()
 			.then(function (data) {
 				$scope.posts = data;
 			});
 
-		//toggle comments function, recieves a post object
+		//immediately get all users, put onto scope
+		Users.get()
+			.then(function (users) {
+				$scope.users = users;
+			});
+
+		//toggle comments function, recieves a post object and attaches comments or removes
 		$scope.toggleComments = function (post) {
 			//if post object already contains comments property, clear it
 			if (post.comments) {
@@ -28,6 +35,21 @@ app.controller('mainController', ['$scope', 'Posts', 'Comments', function($scope
 				Comments.getAllByPostId(post.id)
 				.then(function (data) {
 					post.comments = data;
+				});
+			}
+		};
+
+		//toggle posts function, recieves a user object and attaches posts or removes
+		$scope.togglePosts = function (user) {
+			//if user object already contains posts property, clear it
+			if (user.posts) {
+				user.posts = undefined;
+			}
+			//if user object does not have posts property, get posts and add it
+			else {
+				Posts.getAllByUserId(user.id)
+				.then(function (data) {
+					user.posts = data;
 				});
 			}
 		};

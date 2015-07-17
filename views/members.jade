@@ -1,0 +1,14 @@
+h1 Members
+
+ul.list-unstyled
+	li(ng-repeat="user in users")
+		div.panel.panel-default
+			div.panel-heading {{user.name}}
+			div.panel-body 
+				p Username: {{user.username}}
+				p Email: {{user.email}}
+			div.panel-body
+				button(ng-click="togglePosts(user)") Posts
+			div.panel.panel-default(ng-repeat="post in user.posts")
+				div.panel-heading Title: {{post.title}}
+				div.panel-body {{post.body}}

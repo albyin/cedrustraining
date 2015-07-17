@@ -26,7 +26,8 @@
 	});
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	//concat added to build code to test not minified
 	grunt.loadNpmTasks('grunt-contrib-concat');
 
-	grunt.registerTask('default', ['concat', 'watch']);
+	grunt.registerTask('default', ['uglify', 'watch']);
 };
