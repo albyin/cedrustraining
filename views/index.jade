@@ -1,16 +1,4 @@
 extends layout
 
 block content
-	div
-		div(ng-switch="curr_view")
-			div(ng-switch-when="home")
-				div(ng-include="'page/home'")
-
-			div(ng-switch-when="posts")
-				div(ng-include="'page/posts'")
-
-			div(ng-switch-when="members")
-				div(ng-include="'page/members'")
-
-			div(ng-switch-default)
-				div(ng-include="'page/home'")
+	div(ng-view)

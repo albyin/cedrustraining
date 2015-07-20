@@ -7,20 +7,10 @@ html(ng-app="ngMyApp")
 		script(src="javascripts/vendors/jquery-2.1.4.js")
 		script(src="bootstrap-3.3.5-dist/js/bootstrap.js")
 		script(src="javascripts/vendors/angular.js")
+		script(src="javascripts/vendors/angular-route.js")
 		script(src="javascripts/app.min.js")
 	body(ng-controller = "mainController")
-		div.navbar.navbar-default.navbar-fixed-top
-			div.container
-				a.navbar-brand(ng-click="goView('home')") 
-					i.glyphicon.glyphicon-leaf 
-					span hello this is nav bar
-				ul.nav.navbar-nav.navbar-right
-					li 
-						a(ng-click="goView('posts')") posts
-					li 
-						a(ng-click="goView('members')") members
+		include navbar-header
 		div.container(id="content")
 			block content
-		div.navbar.navbar-default.navbar-fixed-bottom(id="footer")
-			div.container
-				p.text-center Copyright 2015
+		include navbar-footer

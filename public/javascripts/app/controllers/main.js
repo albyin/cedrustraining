@@ -1,6 +1,27 @@
-var app = angular.module('ngMyApp', []);
+var app = angular.module('ngMyApp', ['ngRoute']);
 
-app.controller('mainController', ['$rootScope','$scope', 'Posts', 'Comments', 'Users', function($rootScope, $scope, Posts, Comments, Users){
+app.config(['$routeProvider', 
+  function($routeProvider) {
+
+    $routeProvider.
+    	when('/home', {
+        templateUrl: 'page/home',
+        controller: 'mainController'
+      }).
+      when('/posts', {
+        templateUrl: 'page/posts',
+        controller: 'postController'
+      }).
+      when('/members', {
+        templateUrl: 'page/members',
+        controller: 'userController'
+      }).
+      otherwise({
+        redirectTo: '/home'
+      });
+  }]);
+
+app.controller('mainController', ['$rootScope', '$scope', 'Posts', 'Users', 'Comments', function($rootScope, $scope, Posts, Users, Comments){
 		//define title
 		$scope.title = 'Title comes from the controller';
 
