@@ -1,7 +1,7 @@
 var app = angular.module('ngMyApp', ['ngRoute']);
 
 app.config(['$routeProvider', 
-  function($routeProvider) {
+	function($routeProvider) {
 
     $routeProvider.
     	when('/home', {
@@ -21,7 +21,8 @@ app.config(['$routeProvider',
       });
   }]);
 
-app.controller('mainController', ['$rootScope', '$scope', 'Posts', 'Users', 'Comments', function($rootScope, $scope, Posts, Users, Comments){
+app.controller('mainController', ['$rootScope', '$scope', 'Posts', 'Users', 'Comments', 
+	function($rootScope, $scope, Posts, Users, Comments){
 		//define title
 		$scope.title = 'Title comes from the controller';
 

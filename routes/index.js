@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
 
 /* GET any other page. */
 router.get('/page/:id', function(req, res, next) {
-  res.partial(req.params.id);
+  res.render(req.params.id);
 });
 
 module.exports = router;
