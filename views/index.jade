@@ -1,17 +1,16 @@
 extends layout
 
 block content
-	div(ng-controller = "mainController")
-
+	div
 		div(ng-switch="curr_view")
 			div(ng-switch-when="home")
-				include home.jade
+				div(ng-include="'page/home'")
+
 			div(ng-switch-when="posts")
-				include posts.jade
+				div(ng-include="'page/posts'")
+
 			div(ng-switch-when="members")
-				include members.jade
+				div(ng-include="'page/members'")
+
 			div(ng-switch-default)
-				include home.jade
-
-
-
+				div(ng-include="'page/home'")

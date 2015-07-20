@@ -4,13 +4,13 @@ app.controller('mainController', ['$rootScope','$scope', 'Posts', 'Comments', 'U
 		//define title
 		$scope.title = 'Title comes from the controller';
 
-		//set initial view
-		$rootScope.curr_view = 'home';
-
 		//expose function to access rootScope to change views
 		$scope.goView = function (view_name) {
 			$rootScope.curr_view = view_name;
 		};
+
+		//set initial view
+		$scope.goView('home');
 
 		//immediately get all posts, put onto scope
 		Posts.get()
