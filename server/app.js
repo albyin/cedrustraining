@@ -26,7 +26,14 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../public')));
+
+// set up passport
+app.use(session({ secret: 'Coffee is the lifeblood of the American workforce'}));
+app.use(passport.initialize());
+app.use(passport.session()); //persistent login sessions
+app.use(flash()); //use connect-flash for flash messages stored in session
+
 
 app.use('/', routes);
 app.use('/users', users);
