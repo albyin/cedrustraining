@@ -1,4 +1,5 @@
-app.controller('postController', ['$scope', 'Posts', 'Comments', function($scope, Posts, Comments){
+app.controller('postsController', ['$scope', 'Posts', 'Comments', 
+	function($scope, Posts, Comments){
 
 		//immediately get all posts, put onto scope
 		Posts.get()

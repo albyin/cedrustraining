@@ -17,11 +17,11 @@ app.config(['$routeProvider', '$locationProvider',
       }).
       when('/posts', {
         templateUrl: 'page/posts',
-        controller: 'postController'
+        controller: 'postsController'
       }).
       when('/members', {
         templateUrl: 'page/members',
-        controller: 'userController'
+        controller: 'usersController'
       }).
       otherwise({
         redirectTo: '/'

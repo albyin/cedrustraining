@@ -1,4 +1,5 @@
-app.controller('userController', ['$scope', 'Posts', 'Users', function($scope, Posts, Users){
+app.controller('usersController', ['$scope', 'Posts', 'Users', 
+	function($scope, Posts, Users){
 
 		//immediately get all users, put onto scope
 		Users.get()
