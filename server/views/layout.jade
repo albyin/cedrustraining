@@ -1,6 +1,7 @@
 doctype html
 html(ng-app="ngMyApp")
 	head
+		//- base(href="/")
 		link(rel="stylesheet", href="bootstrap-3.3.5-dist/css/bootstrap.css")
 		link(rel="stylesheet", href="/stylesheets/style.css")
 		script(src="javascripts/vendors/jquery-2.1.4.js")
@@ -9,7 +10,7 @@ html(ng-app="ngMyApp")
 		script(src="javascripts/vendors/angular-route.js")
 		script(src="javascripts/app.min.js")
 	body(ng-controller = "mainController")
-		include navbar-header
+		include ./includes/navbar-header
 		div.container(id="content")
 			block content
-		include navbar-footer
+		include ./includes/navbar-footer

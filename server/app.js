@@ -8,11 +8,11 @@ var bodyParser = require('body-parser');
 //set up requirements for authenictaion
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var flash = require('connect-flash');
 var session = require('express-session');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
 
 var app = express();
 
@@ -29,14 +29,29 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../public')));
 
 // set up passport
-app.use(session({ secret: 'Coffee is the lifeblood of the American workforce'}));
+
+var auth_creds = require('./authcredentials');
+passport.use(new GoogleStrategy({
+    clientID: auth_creds.googleClientID,
+    clientSecret: auth_creds.googleClientSecret,
+    callbackURL: "http://localhost:3000/auth/google/callback"
+  },
+  function(accessToken, refreshToken, profile, done) {
+    return done(null, profile);
+  }
+));
+
+require('./config/passport')(passport);
+app.use(session({ secret: 'Coffee is the lifeblood of the American workforce', 
+                   resave: false,
+                   saveUninitialized: false}));
 app.use(passport.initialize());
 app.use(passport.session()); //persistent login sessions
 app.use(flash()); //use connect-flash for flash messages stored in session
 
 
-app.use('/', routes);
-app.use('/users', users);
+// app.use('/', routes);
+require('./routes/index.js')(app, passport);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

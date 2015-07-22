@@ -23,6 +23,10 @@ app.config(['$routeProvider', '$locationProvider',
         templateUrl: 'page/members',
         controller: 'usersController'
       }).
+      when('/login', {
+        templateUrl: 'page/login',
+        controller: 'loginController'
+      }).
       otherwise({
         redirectTo: '/'
       });
