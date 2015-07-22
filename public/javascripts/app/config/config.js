@@ -4,10 +4,10 @@ app.config(['$routeProvider', '$locationProvider',
 	function($routeProvider, $locationProvider) {
 
 		//this locationProvider setting removes need for '#/' in URLs
-		$locationProvider.html5Mode({
-		  enabled: true,
-		  requireBase: false
-		});
+    $locationProvider.html5Mode({
+      enabled: true,
+      requireBase: false
+    });
 
 		//configure routes
     $routeProvider.

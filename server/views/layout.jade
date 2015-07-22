@@ -12,5 +12,6 @@ html(ng-app="ngMyApp")
 	body(ng-controller = "mainController")
 		include ./includes/navbar-header
 		div.container(id="content")
-			block content
+			div(ng-view)
+			//- block content
 		include ./includes/navbar-footer

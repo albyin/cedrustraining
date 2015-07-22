@@ -7,8 +7,6 @@ var bodyParser = require('body-parser');
 
 //set up requirements for authenictaion
 var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var flash = require('connect-flash');
 var session = require('express-session');
 
@@ -30,21 +28,10 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 // set up passport
 
-var auth_creds = require('./authcredentials');
-passport.use(new GoogleStrategy({
-    clientID: auth_creds.googleClientID,
-    clientSecret: auth_creds.googleClientSecret,
-    callbackURL: "http://localhost:3000/auth/google/callback"
-  },
-  function(accessToken, refreshToken, profile, done) {
-    return done(null, profile);
-  }
-));
-
 require('./config/passport')(passport);
 app.use(session({ secret: 'Coffee is the lifeblood of the American workforce', 
-                   resave: false,
-                   saveUninitialized: false}));
+                   resave: true,
+                   saveUninitialized: true}));
 app.use(passport.initialize());
 app.use(passport.session()); //persistent login sessions
 app.use(flash()); //use connect-flash for flash messages stored in session

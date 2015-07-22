@@ -17,9 +17,9 @@
 //new version
 module.exports = function(app, passport) {
 
-    app.get('/', function(req, res) {
-        res.render('index'); 
-    });
+    // app.get('/', function(req, res) {
+    //     res.render('index'); 
+    // });
 
 	app.get('/page/:id', function(req, res, next) {
         console.log('entered page/id route');
@@ -48,8 +48,12 @@ module.exports = function(app, passport) {
         failureFlash : true // allow flash messages
     }));
 
-    // app.get('/logout', function(req, res) {
-    //     req.logout();
-    //     res.redirect('/');
-    // });
+    app.get('/authUserInfo', function(req, res, next){
+        res.send(req.user);
+    });
+
+    app.get('/logout', function(req, res) {
+        req.logout();
+        res.redirect('/');
+    });
 };
