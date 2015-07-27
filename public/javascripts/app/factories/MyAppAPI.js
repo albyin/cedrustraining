@@ -77,14 +77,3 @@ app.factory('Users', ['$http', 'APIConfig', function($http, APIConfig){
 		}
 	};
 }]);
-
-app.factory('Auth', ['$http', function($http) {
-	return {
-		getUserInfo: function() {
-			return $http.get('/authUserInfo')
-				.then(function (res) {
-					return res.data;
-				});
-		}
-	};
-}]);
