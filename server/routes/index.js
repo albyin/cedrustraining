@@ -27,21 +27,16 @@ module.exports = function(app, passport) {
         }
     });
 
+    //route to render form views
     app.get('/register/:id', function(req, res, next){
         res.render('forms/form'+req.params.id);
     });
 
-    // app.get('/register/1', function(req, res, next){
-    //     console.log("entered route /register/1");
-    //     res.render('forms/form1');
-    // });
-
-    // app.get('/register/2', function(req, res, next){
-    //     res.render('forms/form2');
-    // });
-
+    //route to recieve post request to verify
     app.post('/register', function(req, res, next){
-        console.log('Recieved post to /register');
+        console.log('Recieved post to /register: ', req.body);
+
+        res.send(req.body);
     });
 
     app.get('/auth/google',

@@ -1,5 +1,6 @@
 body {
-	background-image: url("https://unsplash.imgix.net/photo-1434139240289-56c519f77cb0?dpr=2&fit=crop&fm=jpg&h=700&q=75&w=1050");
+  /*background-image: url("https://unsplash.imgix.net/photo-1434139240289-56c519f77cb0?dpr=2&fit=crop&fm=jpg&h=700&q=75&w=1050");*/
+	background-image: url("https://ununsplash.imgix.net/photo-1433833103303-111110aae192?dpr=2&fit=crop&fm=jpg&h=700&q=75&w=1050");
   background-size: cover;
   background-attachment: fixed;
   width: 100%;
@@ -23,4 +24,8 @@ body {
 
 .navbar-brand span{
   padding-left:10px;
+}
+
+.validate-error {
+  color:red;
 }

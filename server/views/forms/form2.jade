@@ -1,11 +1,16 @@
 h2 this is form 2
 
-form(name="userForm")
-	input(type="text", name="lastName", ng-model="customer.lastName", ng-minlength="3", ng-maxlength="8", required)
-	p(ng-show="userForm.lastName.$error.minlength") Last Name is too short
-	p(ng-show="userForm.lastName.$error.maxlength") Last Name is too long
-	p(ng-show="userForm.lastName.$error.required") Last Name is required
+form(name="userForm", novalidate, ng-submit="submitForm(userForm.$valid)")
+	
+	div.form-group(ng-class="{'has-error':userForm.email.$invalid && !userForm.email.$pristine}")
+		label Email
+		input.form-control(type="email", name="email", ng-model="customer.email")
+		p.validate-error(ng-show="userForm.email.$invalid && !userForm.email.$pristine") Please enter valid email
+	
+	div.form-group(ng-class="{'has-error':userForm.income.$invalid && !userForm.income.$pristine}")
+		label Income Level
+		input.form-control(type="number", name="income", ng-model="customer.income", required)
 
 	br
 		
-	button.btn.btn-success(ng-click="validate()") Submit
+	button.btn.btn-success(type="submit", ng-disabled="userForm.$invalid") Submit

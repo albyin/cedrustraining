@@ -1,11 +1,27 @@
 h2 welcome to register page
 
-form(name="userForm")
-	input(type="text", name="firstName", ng-model="customer.firstName", ng-minlength="3", ng-maxlength="8", required)
-	p(ng-show="userForm.firstName.$error.minlength") First Name is too short
-	p(ng-show="userForm.firstName.$error.maxlength") First Name is too long
-	p(ng-show="userForm.firstName.$error.required") First Name is required
+form(name="userForm", novalidate, ng-submit="submitForm(userForm.$valid)")
+	
+	div.form-group(ng-class="{'has-error':userForm.firstName.$invalid && !userForm.firstName.$pristine}")
+		label First Name
+		input.form-control(type="text", name="firstName", ng-model="customer.firstName", ng-minlength="3", ng-maxlength="8", required)
+		p.validate-error(ng-show="userForm.firstName.$error.minlength && !userForm.firstName.$pristine") First Name is too short
+		p.validate-error(ng-show="userForm.firstName.$error.maxlength && !userForm.firstName.$pristine") First Name is too long
+		p.validate-error(ng-show="userForm.firstName.$error.required && !userForm.firstName.$pristine") First Name is required
+
+	div.form-group(ng-class="{'has-error':userForm.lastName.$invalid && !userForm.lastName.$pristine}")
+		label Last Name
+		input.form-control(type="text", name="lastName", ng-model="customer.lastName", ng-minlength="3", ng-maxlength="8", required)
+		p.validate-error(ng-show="userForm.lastName.$error.minlength && !userForm.lastName.$pristine") Last Name is too short
+		p.validate-error(ng-show="userForm.lastName.$error.maxlength && !userForm.lastName.$pristine") Last Name is too long
+		p.validate-error(ng-show="userForm.lastName.$error.required && !userForm.lastName.$pristine") Last Name is required
+
+	div.form-group(ng-class="{'has-error':userForm.age.$invalid && !userForm.age.$pristine}")
+		label Age
+		input.form-control(type="number", name="age", ng-model="customer.age", min="18")
+		p.validate-error(ng-show="userForm.age.$error.min && !userForm.age.$pristine") You must be over 18 to register
+		p.validate-error(ng-show="userForm.age.$error.required && !userForm.age.$pristine") Age is required
 
 	br
 		
-	button.btn.btn-success(ng-click="validate()") Submit
+	button.btn.btn-success(type="submit", ng-disabled="userForm.$invalid") Submit
