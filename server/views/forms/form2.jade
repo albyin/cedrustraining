@@ -1,0 +1,11 @@
+h2 this is form 2
+
+form(name="userForm")
+	input(type="text", name="lastName", ng-model="customer.lastName", ng-minlength="3", ng-maxlength="8", required)
+	p(ng-show="userForm.lastName.$error.minlength") Last Name is too short
+	p(ng-show="userForm.lastName.$error.maxlength") Last Name is too long
+	p(ng-show="userForm.lastName.$error.required") Last Name is required
+
+	br
+		
+	button.btn.btn-success(ng-click="validate()") Submit

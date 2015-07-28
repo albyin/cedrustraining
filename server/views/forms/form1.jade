@@ -1,0 +1,11 @@
+h2 welcome to register page
+
+form(name="userForm")
+	input(type="text", name="firstName", ng-model="customer.firstName", ng-minlength="3", ng-maxlength="8", required)
+	p(ng-show="userForm.firstName.$error.minlength") First Name is too short
+	p(ng-show="userForm.firstName.$error.maxlength") First Name is too long
+	p(ng-show="userForm.firstName.$error.required") First Name is required
+
+	br
+		
+	button.btn.btn-success(ng-click="validate()") Submit

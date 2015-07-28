@@ -17,11 +17,7 @@
 //new version
 module.exports = function(app, passport) {
 
-    // app.get('/', function(req, res) {
-    //     res.render('index'); 
-    // });
-
-	app.get('/page/:id', function(req, res, next) {
+    app.get('/page/:id', function(req, res, next) {
         console.log('entered page/id route');
         if (req.user) {
             res.render(req.params.id);
@@ -29,7 +25,24 @@ module.exports = function(app, passport) {
         else {
             res.render('login');
         }
-	});
+    });
+
+    app.get('/register/:id', function(req, res, next){
+        res.render('forms/form'+req.params.id);
+    });
+
+    // app.get('/register/1', function(req, res, next){
+    //     console.log("entered route /register/1");
+    //     res.render('forms/form1');
+    // });
+
+    // app.get('/register/2', function(req, res, next){
+    //     res.render('forms/form2');
+    // });
+
+    app.post('/register', function(req, res, next){
+        console.log('Recieved post to /register');
+    });
 
     app.get('/auth/google',
       passport.authenticate('google', { scope: 'https://www.googleapis.com/auth/plus.login' }));

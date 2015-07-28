@@ -12,20 +12,28 @@ app.config(['$routeProvider', '$locationProvider',
 		//configure routes
     $routeProvider.
     	when('/', {
-        templateUrl: 'page/home',
+        templateUrl: '/page/home',
         controller: 'mainController'
       }).
       when('/posts', {
-        templateUrl: 'page/posts',
+        templateUrl: '/page/posts',
         controller: 'postsController'
       }).
       when('/members', {
-        templateUrl: 'page/members',
+        templateUrl: '/page/members',
         controller: 'usersController'
       }).
       when('/login', {
-        templateUrl: 'page/login',
+        templateUrl: '/page/login',
         controller: 'loginController'
+      }).
+      when('/register/1', {
+        templateUrl: '/register/1',
+        controller: 'register1Controller'
+      }).
+      when('/register/2', {
+        templateUrl: '/register/2',
+        controller: 'register2Controller'
       }).
       otherwise({
         redirectTo: '/'
