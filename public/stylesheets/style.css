@@ -29,3 +29,12 @@ body {
 .validate-error {
   color:red;
 }
+
+.form-inline .form-group {
+  padding-left:0px;
+  padding-right:35px;
+}
+
+.pull-right {
+  margin-left: 20px;
+}

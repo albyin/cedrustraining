@@ -1,5 +1,5 @@
-app.controller('register1Controller', ['$scope', '$http', 'NewCustomer',
-	function($scope, $http, NewCustomer){
+app.controller('register1Controller', ['$scope', '$http', 'NewCustomer', '$location',
+	function($scope, $http, NewCustomer, $location){
 
 		$scope.submitForm = function(isValid) {
 
@@ -11,8 +11,11 @@ app.controller('register1Controller', ['$scope', '$http', 'NewCustomer',
 	      var res = NewCustomer.submit();
 
 	      var data = res.then(function (response) {
+					// console.log('NewCustomer Submit results: ', response.data);
 				
-					console.log("NewCustomer Submit results: ", response.data);
+					if (response.data === 'No Email') {
+						$location.path('/register/2');
+					}
 
 				});
 

@@ -1,6 +1,6 @@
-h2 welcome to register page
+h2 Register New Customer
 
-form(name="userForm", novalidate, ng-submit="submitForm(userForm.$valid)")
+form.col-md-8(name="userForm", novalidate, ng-submit="submitForm(userForm.$valid)")
 	
 	div.form-group(ng-class="{'has-error':userForm.firstName.$invalid && !userForm.firstName.$pristine}")
 		label First Name
@@ -24,4 +24,4 @@ form(name="userForm", novalidate, ng-submit="submitForm(userForm.$valid)")
 
 	br
 		
-	button.btn.btn-success(type="submit", ng-disabled="userForm.$invalid") Submit
+	button.btn.btn-success.pull-right(type="submit", ng-disabled="userForm.$invalid") Next

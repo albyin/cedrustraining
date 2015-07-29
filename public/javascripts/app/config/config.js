@@ -35,6 +35,10 @@ app.config(['$routeProvider', '$locationProvider',
         templateUrl: '/register/2',
         controller: 'register2Controller'
       }).
+      when('/register/3', {
+        templateUrl: '/register/3',
+        controller: 'register3Controller'
+      }).
       otherwise({
         redirectTo: '/'
       });

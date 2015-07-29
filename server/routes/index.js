@@ -36,7 +36,33 @@ module.exports = function(app, passport) {
     app.post('/register', function(req, res, next){
         console.log('Recieved post to /register: ', req.body);
 
-        res.send(req.body);
+        var obj = req.body;
+        if (!obj.firstName){
+            res.send('No First Name');
+        }
+        else if (!obj.lastName) {
+            res.send('No Last Name');
+        }
+        else if (!obj.age){
+            res.send('No Age');
+        }
+        else if (obj.age < 18){
+            res.send('Age must be over 18');
+        }
+        else if (!obj.email){
+            res.send('No Email');
+        }
+        else if (!obj.income){
+            res.send('No Income');
+        }
+        else if (obj.income < 50000){
+            res.send('Income must be greater than 50,000');
+        }
+        else if (!obj.address){
+            res.send('No Address');
+        }
+
+        // res.send(req.body);
     });
 
     app.get('/auth/google',

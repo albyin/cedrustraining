@@ -1,16 +1,20 @@
-h2 this is form 2
+h2 Additional Personal Info
 
-form(name="userForm", novalidate, ng-submit="submitForm(userForm.$valid)")
+form.col-md-8(name="userForm", novalidate, ng-submit="submitForm(userForm.$valid)")
 	
 	div.form-group(ng-class="{'has-error':userForm.email.$invalid && !userForm.email.$pristine}")
 		label Email
-		input.form-control(type="email", name="email", ng-model="customer.email")
+		input.form-control(type="email", name="email", ng-model="customer.email", required)
 		p.validate-error(ng-show="userForm.email.$invalid && !userForm.email.$pristine") Please enter valid email
 	
 	div.form-group(ng-class="{'has-error':userForm.income.$invalid && !userForm.income.$pristine}")
-		label Income Level
-		input.form-control(type="number", name="income", ng-model="customer.income", required)
+		label Yearly Income (in Dollars)
+		input.form-control(type="number", name="income", ng-model="customer.income", required, min="50000")
+		p.validate-error(ng-show="userForm.income.$error.min && !userForm.income.$pristine") Sorry, minimum annual income for this service is $50,000
+		p.validate-error(ng-show="userForm.income.$error.required && !userForm.income.$pristine") Income is required
 
 	br
 		
-	button.btn.btn-success(type="submit", ng-disabled="userForm.$invalid") Submit
+	button.btn.btn-warning.pull-left(type="button", ng-click="backButton()") Back
+	button.btn.btn-success.pull-right(type="submit", ng-disabled="userForm.$invalid") Next
+	button.btn.btn-info.pull-right(type="button") Save Now

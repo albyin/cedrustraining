@@ -1,0 +1,24 @@
+h2 this is part 3 yawl, put in your address!
+
+form.col-md-8(name="userForm", novalidate, ng-submit="submitForm(userForm.$valid)")
+	
+	div.form-group(ng-class="{'has-error':userForm.address.$invalid && !userForm.address.$pristine}")
+		label Street Address
+		input.form-control(type="text", name="street", ng-model="customer.street", required)
+		p.validate-error(ng-show="userForm.street.$invalid && !userForm.street.$pristine") Please enter street Address
+		
+	div.form-inline
+		div.form-group
+			label State
+			br
+			select(ng-model="customer.state", ng-change="getCities()")
+				option(ng-repeat="state in states") {{state}}
+		div.form-group
+			label City
+			br
+			select(ng-model="customer.city")
+				option(ng-repeat="city in cities") {{city}}
+	br
+
+	button.btn.btn-warning.pull-left(type="button", ng-click="backButton()") Back
+	button.btn.btn-success(type="submit", ng-disabled="userForm.$invalid") Submit
