@@ -58,11 +58,18 @@ module.exports = function(app, passport) {
         else if (obj.income < 50000){
             res.send('Income must be greater than 50,000');
         }
-        else if (!obj.address){
-            res.send('No Address');
+        else if (!obj.street){
+            res.send('No Address - Street');
         }
-
-        // res.send(req.body);
+        else if (!obj.state){
+            res.send('No Address - State');
+        }
+        else if (!obj.city){
+            res.send('No Address - City');
+        }
+        else {
+            res.send('Success!');
+        }
     });
 
     app.get('/auth/google',
